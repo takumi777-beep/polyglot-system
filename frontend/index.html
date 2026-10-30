@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Aletheia - Ethical Decentralized Network</title>
+    <style>
+        body { background: #0a0a0a; color: #d4d4d4; font-family: 'Courier New', monospace; padding: 20px; }
+        h1 { color: #4ade80; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .card { border: 1px solid #333; padding: 15px; margin-bottom: 20px; background: #111; }
+        .proof { color: #60a5fa; }
+        .verified { color: #4ade80; }
+        .fail { color: #f87171; }
+    </style>
+</head>
+<body>
+    <h1>🌿 Aletheia: Truth & Ethics Protocol</h1>
+    <div class="card">
+        <h2>Zero-Knowledge Proofs</h2>
+        <p>プライバシーを守りながら、ルールの遵守を証明します。</p>
+        <div id="proofs"></div>
+    </div>
+    <div class="card">
+        <h2>Ethical Market</h2>
+        <p>ゲーム理論に基づき、社会への貢献度が公平に評価されます。</p>
+        <div id="market"></div>
+    </div>
+
+    <script>
+        // シミュレーションデータ（実際はGo/RustからAPIで取得）
+        const proofs = [
+            { user: "Node_A", commitment: "0x8f...3a", verified: true },
+            { user: "Node_B", commitment: "0x2c...1b", verified: true },
+            { user: "Node_C", commitment: "0x9d...4e", verified: false }
+        ];
+
+        const market = [
+            { name: "Alice", score: 0.9, reward: "45.0" },
+            { name: "Bob", score: 0.3, reward: "5.0" },
+            { name: "Charlie", score: 0.5, reward: "10.0" }
+        ];
+
+        document.getElementById('proofs').innerHTML = proofs.map(p => `
+            <div style="margin-bottom: 5px;">
+                ${p.user}: <span class="proof">${p.commitment}</span>
+                <span class="${p.verified ? 'verified' : 'fail'}">
+                    ${p.verified ? '✅ Verified' : '❌ Failed'}
+                </span>
+            </div>
+        `).join('');
+
+        document.getElementById('market').innerHTML = market.map(m => `
+            <div style="margin-bottom: 5px;">
+                ${m.name} (Score: ${m.score}) → <span class="verified">${m.reward} ATH</span>
+            </div>
+        `).join('');
+    </script>
+</body>
+</html>
